@@ -1,0 +1,160 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-the-app-shell-with-a-coherent-visual-theme-colors-typography-spacing-and-component-styles-applied-consistently-across-all-pages-for-the-shikho-computer-class-brand",
+      "featureTitle": "Create the app shell with a coherent visual theme (colors, typography, spacing, and component styles) applied consistently across all pages for the “Shikho Computer Class” brand.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-public-landing-page-for-shikho-computer-class-that-introduces-the-app-and-provides-clear-calls-to-action-to-browse-courses-and-sign-in",
+      "featureTitle": "Implement a public landing page for “Shikho Computer Class” that introduces the app and provides clear calls-to-action to browse courses and sign in.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-internet-identity-sign-in-out-ui-and-authenticated-app-state-so-users-can-access-enrolled-courses-and-track-progress",
+      "featureTitle": "Add Internet Identity sign-in/out UI and authenticated app state so users can access enrolled courses and track progress.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/AuthButton.tsx",
+        "frontend/src/components/auth/RequireAuth.tsx",
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/main.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-browse-courses-experience-a-course-list-page-with-search-filter-and-a-course-detail-page-showing-syllabus-lesson-list-and-an-enroll-unenroll-action-if-supported",
+      "featureTitle": "Build a “Browse Courses” experience: a course list page with search/filter and a course detail page showing syllabus (lesson list) and an enroll/unenroll action (if supported).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useCourses.ts",
+        "frontend/src/hooks/useEnrollment.ts",
+        "frontend/src/pages/CourseDetailPage.tsx",
+        "frontend/src/pages/CourseListPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-lesson-viewer-page-that-displays-lesson-content-and-allows-the-signed-in-user-to-mark-lessons-as-completed-show-per-course-progress",
+      "featureTitle": "Build a lesson viewer page that displays lesson content and allows the signed-in user to mark lessons as completed; show per-course progress.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/RequireAuth.tsx",
+        "frontend/src/hooks/useProgress.ts",
+        "frontend/src/pages/CourseDetailPage.tsx",
+        "frontend/src/pages/LessonViewerPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-my-learning-dashboard-for-signed-in-users-showing-enrolled-courses-and-progress-with-quick-navigation-back-to-the-next-incomplete-lesson",
+      "featureTitle": "Add a “My Learning” dashboard for signed-in users showing enrolled courses and progress, with quick navigation back to the next incomplete lesson.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/hooks/useMyLearning.ts",
+        "frontend/src/pages/MyLearningPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-static-image-assets-generated-for-the-app-to-frontend-public-assets-generated-and-use-them-in-the-ui-logo-and-a-landing-illustration",
+      "featureTitle": "Add static image assets generated for the app to frontend/public/assets/generated and use them in the UI (logo and a landing illustration).",
+      "files": [
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

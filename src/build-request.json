@@ -1,0 +1,187 @@
+{
+  "kind": "build_request",
+  "title": "Build Shikho Computer Class learning app (MVP)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create the app shell with a coherent visual theme (colors, typography, spacing, and component styles) applied consistently across all pages for the “Shikho Computer Class” brand.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App has a consistent theme across navigation, pages, forms, and cards",
+        "Theme does not rely on a blue/purple primary palette"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a public landing page for “Shikho Computer Class” that introduces the app and provides clear calls-to-action to browse courses and sign in.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Landing page renders at the default route",
+        "Landing includes: app name, brief description, primary buttons for “Browse Courses” and “Sign in”",
+        "Landing uses generated static images from frontend/public/assets/generated when available"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add Internet Identity sign-in/out UI and authenticated app state so users can access enrolled courses and track progress.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can sign in and sign out using Internet Identity",
+        "UI clearly indicates signed-in vs signed-out state",
+        "Protected pages prompt sign-in when not authenticated"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement backend data models and APIs to support: course catalog, lesson content, enrollments per user, and lesson completion/progress per user.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes query/update methods to: list courses, get course details (including lessons), enroll current user in a course, mark a lesson completed, and fetch current user progress",
+        "All user-specific data is keyed by the caller principal",
+        "Data persists across canister upgrades using stable storage patterns appropriate for a single-actor Motoko canister"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build a “Browse Courses” experience: a course list page with search/filter and a course detail page showing syllabus (lesson list) and an enroll/unenroll action (if supported).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Course list loads from backend and supports basic text search (client-side or server-side)",
+        "Course detail page shows title, description, and ordered lessons",
+        "Enroll action updates backend and updates UI state without full page refresh"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build a lesson viewer page that displays lesson content and allows the signed-in user to mark lessons as completed; show per-course progress.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Lesson viewer loads lesson by course+lesson identifier and renders readable content",
+        "“Mark as completed” persists to backend and updates progress indicators",
+        "Course detail shows progress (e.g., completed X of Y) for the signed-in user"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a “My Learning” dashboard for signed-in users showing enrolled courses and progress, with quick navigation back to the next incomplete lesson.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard only shows after sign-in",
+        "Dashboard lists enrolled courses with progress",
+        "Each enrolled course provides a “Continue” action that routes to the next incomplete lesson when available"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Seed the app with a small default course catalog (at least 2 courses, each with at least 5 lessons) suitable for beginner computer learning, with all user-facing text in English.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 2 courses exist by default without requiring admin tools",
+        "Each course has at least 5 lessons with English titles and short content",
+        "Frontend can browse and open the seeded content successfully"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add static image assets generated for the app to frontend/public/assets/generated and use them in the UI (logo and a landing illustration).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "shikho computer class aap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated with the specified filenames",
+        "Landing page renders the hero illustration",
+        "Header/nav or landing displays the logo"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
+    "Do not modify files under frontend/src/components/ui or other immutable paths; compose them from app code instead.",
+    "Do not add third-party authentication beyond Internet Identity."
+  ],
+  "nonGoals": [
+    "Payments, subscriptions, or checkout flows",
+    "Live classes, real-time chat, or video conferencing",
+    "Admin CMS for creating/editing courses via UI",
+    "External databases or integrations"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal flat logo mark with a computer + graduation cap motif, warm colors (shikho-logo.dim_512x512.png)",
+      "Friendly isometric illustration of a student learning on a laptop with simple UI elements, warm palette (shikho-hero.dim_1600x900.png)"
+    ],
+    "edits": []
+  }
+}

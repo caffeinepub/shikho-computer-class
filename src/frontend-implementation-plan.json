@@ -1,0 +1,238 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Shikho Computer Class (MVP) — Frontend",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create an app shell and cohesive warm visual theme for the “Shikho Computer Class” brand (non-blue/purple primary) applied consistently across pages.",
+      "acceptanceCriteria": [
+        "App has a consistent theme across navigation, pages, forms, and cards",
+        "Theme does not rely on a blue/purple primary palette"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles and Tailwind layer setup, including warm brand CSS variables (non-blue/purple primary), typography defaults, spacing rhythm, and base element styles used across navigation/pages/forms/cards."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust theme tokens (colors/radius/shadows/typography) to align with the warm Shikho brand and ensure consistent component styling across the app shell."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "create",
+          "description": "Add a shared layout wrapper that applies consistent page structure (header + main container) and reusable spacing/typography rules across all pages."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "create",
+          "description": "Create a consistent header/nav component (brand + primary navigation + auth actions) used across the app. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Implement the app shell root component that uses the shared AppLayout and provides route-level layout consistency across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement a public landing page at the default route with app intro and CTAs to browse courses and sign in, using generated static images when available.",
+      "acceptanceCriteria": [
+        "Landing page renders at the default route",
+        "Landing includes: app name, brief description, primary buttons for “Browse Courses” and “Sign in”",
+        "Landing uses generated static images from frontend/public/assets/generated when available"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "create",
+          "description": "Create the public landing page with app name, brief English description, and primary CTAs (“Browse Courses” routes to the course list; “Sign in” triggers Internet Identity login). Wire in hero illustration from frontend/public/assets/generated/shikho-hero.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire LandingPage to the default route and ensure navigation to Browse Courses and Sign in is accessible from the landing page."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Ensure header supports a prominent “Browse Courses” navigation item and a “Sign in” action that is consistent with landing CTAs. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add Internet Identity sign-in/out UI and authenticated app state, with protected pages prompting sign-in when unauthenticated.",
+      "acceptanceCriteria": [
+        "User can sign in and sign out using Internet Identity",
+        "UI clearly indicates signed-in vs signed-out state",
+        "Protected pages prompt sign-in when not authenticated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/AuthButton.tsx",
+          "operation": "create",
+          "description": "Create a sign-in/sign-out button UI using the existing Internet Identity hook, showing clear signed-in vs signed-out states and handling loading/error states. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/RequireAuth.tsx",
+          "operation": "create",
+          "description": "Add a small route guard/wrapper that renders a sign-in prompt (and optional link back) when the user is not authenticated, and renders children when authenticated. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Integrate AuthButton into the header and show a clear authenticated indicator (without exposing principal ID). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Protect authenticated-only routes (e.g., My Learning and completion actions page) by wrapping them with RequireAuth so unauthenticated users are prompted to sign in."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure auth and query-cache behavior supports logout by clearing cached application data on sign-out (e.g., integrate React Query client clearing within auth UI flow). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build Browse Courses: course list with search/filter and course detail page with syllabus and enroll/unenroll action (if supported), updating UI without full refresh.",
+      "acceptanceCriteria": [
+        "Course list loads from backend and supports basic text search (client-side or server-side)",
+        "Course detail page shows title, description, and ordered lessons",
+        "Enroll action updates backend and updates UI state without full page refresh"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CourseListPage.tsx",
+          "operation": "create",
+          "description": "Create a course list page that loads courses from the backend, supports basic text search (client-side and/or using backend search), and navigates to course detail. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/CourseDetailPage.tsx",
+          "operation": "create",
+          "description": "Create a course detail page that loads course details from the backend, renders title/description and ordered lesson list (syllabus), and provides an enroll action that updates UI state without a full page refresh. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useCourses.ts",
+          "operation": "create",
+          "description": "Add React Query hooks for listing/searching courses and fetching course details using the existing actor connection (anonymous or authenticated)."
+        },
+        {
+          "path": "frontend/src/hooks/useEnrollment.ts",
+          "operation": "create",
+          "description": "Add React Query mutation hook(s) for enrolling in a course and updating/invalidation of relevant queries so UI updates without full page refresh."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register and wire routes for Browse Courses and Course Detail pages, and ensure navigation from landing/header works."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build lesson viewer page with lesson content, completion action for signed-in users, and per-course progress indicators.",
+      "acceptanceCriteria": [
+        "Lesson viewer loads lesson by course+lesson identifier and renders readable content",
+        "“Mark as completed” persists to backend and updates progress indicators",
+        "Course detail shows progress (e.g., completed X of Y) for the signed-in user"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LessonViewerPage.tsx",
+          "operation": "create",
+          "description": "Create a lesson viewer page that loads the course, finds the requested lesson by identifier, renders readable English content, and provides a “Mark as completed” action for signed-in users. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useProgress.ts",
+          "operation": "create",
+          "description": "Add React Query hooks to fetch per-course progress and user progress (using the authenticated principal when available) and a mutation to mark lessons completed, with query invalidation for immediate UI updates."
+        },
+        {
+          "path": "frontend/src/pages/CourseDetailPage.tsx",
+          "operation": "modify",
+          "description": "Show per-course progress (e.g., completed X of Y) for the signed-in user on the course detail page and keep it updated after completion actions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the LessonViewerPage route (course + lesson identifiers) and ensure navigation from syllabus and “Continue” actions routes correctly."
+        },
+        {
+          "path": "frontend/src/components/auth/RequireAuth.tsx",
+          "operation": "modify",
+          "description": "Ensure completion-related interactions are protected (prompt sign-in when unauthenticated) while still allowing public viewing of lesson content if desired by the app flow. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add a “My Learning” dashboard for signed-in users showing enrolled courses and progress, with a Continue action to the next incomplete lesson.",
+      "acceptanceCriteria": [
+        "Dashboard only shows after sign-in",
+        "Dashboard lists enrolled courses with progress",
+        "Each enrolled course provides a “Continue” action that routes to the next incomplete lesson when available"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MyLearningPage.tsx",
+          "operation": "create",
+          "description": "Create a signed-in dashboard that loads the user’s enrolled courses and progress, lists them with progress indicators, and provides a “Continue” action to the next incomplete lesson when available. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useMyLearning.ts",
+          "operation": "create",
+          "description": "Add a small helper hook that derives dashboard view-model data (enrolled courses, progress, next incomplete lesson) from existing course and progress queries."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add and protect the “My Learning” route using RequireAuth and ensure header navigation links to it only when signed in."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Show a “My Learning” navigation item when authenticated and hide/disable it when signed out to reflect protected access. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add generated static image assets (logo and landing illustration) under frontend/public/assets/generated and display them in the UI.",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated with the specified filenames",
+        "Landing page renders the hero illustration",
+        "Header/nav or landing displays the logo"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/shikho-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo image asset at the required path and filename for use in header/landing branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/shikho-hero.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated landing hero illustration asset at the required path and filename for use on the landing page."
+        },
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Display the logo image from frontend/public/assets/generated/shikho-logo.dim_512x512.png in the header/nav branding area."
+        },
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Render the hero illustration from frontend/public/assets/generated/shikho-hero.dim_1600x900.png and ensure it is part of the landing page hero section."
+        }
+      ]
+    }
+  ]
+}
