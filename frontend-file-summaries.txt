@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with warm educational color palette (oranges and earth tones) using OKLCH color system for both light and dark modes, plus typography and spacing defaults.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom colors, fonts (Inter), border radius, shadows, and animations to support the warm educational design system.",
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with routes for landing, course browsing, course details, lesson viewer, and authenticated My Learning dashboard.",
+  "frontend/src/components/layout/AppLayout.tsx": "Root layout component that wraps all pages with consistent header navigation and footer structure.",
+  "frontend/src/components/layout/HeaderNav.tsx": "Sticky header navigation with logo, course browsing link, conditional My Learning link for authenticated users, and authentication button.",
+  "frontend/src/components/layout/Footer.tsx": "Footer component displaying copyright notice with caffeine.ai attribution and tagline.",
+  "frontend/src/components/auth/AuthButton.tsx": "Authentication button component that handles Internet Identity sign-in/sign-out with loading states and clears query cache on logout.",
+  "frontend/src/components/auth/RequireAuth.tsx": "Route guard component that displays sign-in prompt for unauthenticated users and renders protected content for authenticated users.",
+  "frontend/src/pages/LandingPage.tsx": "Public landing page with hero section featuring generated illustration, feature cards highlighting beginner-friendly learning, and call-to-action buttons for browsing courses and signing in.",
+  "frontend/src/pages/CourseListPage.tsx": "Course browsing page with search functionality that displays all available courses in a grid with difficulty badges, lesson counts, and type-safe navigation links to course details using params prop.",
+  "frontend/src/pages/CourseDetailPage.tsx": "Course detail page showing course information, syllabus with ordered lessons, enrollment button for authenticated users, and progress tracking for enrolled students.",
+  "frontend/src/pages/LessonViewerPage.tsx": "Lesson viewer displaying lesson content with type-safe navigation between lessons using params, mark-as-complete functionality for authenticated users, and progress tracking.",
+  "frontend/src/pages/MyLearningPage.tsx": "Authenticated dashboard showing enrolled courses with progress bars, completion badges, and type-safe continue/view course actions using params for navigation.",
+  "frontend/src/hooks/useCourses.ts": "React Query hooks for fetching course data including browsing all courses, searching courses by text, and getting individual course details.",
+  "frontend/src/hooks/useEnrollment.ts": "React Query mutation hook for enrolling users in courses with automatic query invalidation to update UI state.",
+  "frontend/src/hooks/useProgress.ts": "React Query hooks for fetching and updating user progress including course-specific progress, overall user progress, and lesson completion mutations.",
+  "frontend/src/hooks/useMyLearning.ts": "Custom hook that combines user progress and course data to provide enrolled courses with progress information and next incomplete lesson for the My Learning dashboard."
+}

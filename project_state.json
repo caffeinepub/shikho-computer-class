@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a \"Shikho Computer Class\" app.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimal flat logo mark with a computer + graduation cap motif, warm colors (shikho-logo.dim_512x512.png)\n- Friendly isometric illustration of a student learning on a laptop with simple UI elements, warm palette (shikho-hero.dim_1600x900.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-the-app-shell-with-a-coherent-visual-theme-colors-typography-spacing-and-component-styles-applied-consistently-across-all-pages-for-the-shikho-computer-class-brand",
+      "title": "Create the app shell with a coherent visual theme (colors, typography, spacing, and component styles) applied consistently across all pages for the “Shikho Computer Class” brand.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-public-landing-page-for-shikho-computer-class-that-introduces-the-app-and-provides-clear-calls-to-action-to-browse-courses-and-sign-in",
+      "title": "Implement a public landing page for “Shikho Computer Class” that introduces the app and provides clear calls-to-action to browse courses and sign in.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-internet-identity-sign-in-out-ui-and-authenticated-app-state-so-users-can-access-enrolled-courses-and-track-progress",
+      "title": "Add Internet Identity sign-in/out UI and authenticated app state so users can access enrolled courses and track progress.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-browse-courses-experience-a-course-list-page-with-search-filter-and-a-course-detail-page-showing-syllabus-lesson-list-and-an-enroll-unenroll-action-if-supported",
+      "title": "Build a “Browse Courses” experience: a course list page with search/filter and a course detail page showing syllabus (lesson list) and an enroll/unenroll action (if supported).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-lesson-viewer-page-that-displays-lesson-content-and-allows-the-signed-in-user-to-mark-lessons-as-completed-show-per-course-progress",
+      "title": "Build a lesson viewer page that displays lesson content and allows the signed-in user to mark lessons as completed; show per-course progress.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-my-learning-dashboard-for-signed-in-users-showing-enrolled-courses-and-progress-with-quick-navigation-back-to-the-next-incomplete-lesson",
+      "title": "Add a “My Learning” dashboard for signed-in users showing enrolled courses and progress, with quick navigation back to the next incomplete lesson.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-static-image-assets-generated-for-the-app-to-frontend-public-assets-generated-and-use-them-in-the-ui-logo-and-a-landing-illustration",
+      "title": "Add static image assets generated for the app to frontend/public/assets/generated and use them in the UI (logo and a landing illustration).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create the Shikho Computer Class app (computer class/learning app).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement backend data models and APIs to support: course catalog, lesson content, enrollments per user, and lesson completion/progress per user.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Seed the app with a small default course catalog (at least 2 courses, each with at least 5 lessons) suitable for beginner computer learning, with all user-facing text in English.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Shikho Computer Class",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,89 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T11:07:49.015Z",
+  "summary": "Frontend implements routing, landing page, course browsing, course detail, lesson viewer, My Learning dashboard, and Internet Identity-based auth UI with a warm (non-blue/purple) theme. Backend adds a Motoko actor with course/lesson/user-progress types and some course APIs plus an admin-gated init seeding function. Several backend acceptance-criteria items (stable upgrade persistence, automatic seeding, and full API surface) are not evidenced in the provided diff summary; image asset files are also not evidenced.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Data persists across canister upgrades using stable storage patterns appropriate for a single-actor Motoko canister",
+      "reason": "The added backend actor shows in-memory `var`/`Map` state, but the diff summary does not show any `stable` variables or `preupgrade`/`postupgrade` logic to persist/restore state across upgrades.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Backend exposes methods to mark a lesson completed and fetch current user progress (and other required APIs)",
+      "reason": "The diff summary explicitly shows `browseCourses`, `getCourse`, and the start of `enrollInCourse`, but does not show (within the visible content) `completeLesson`, `getUserProgress`, or `getCourseProgress`. Frontend hooks call these methods, but their backend implementations are not evidenced in the provided truncated backend file excerpt.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useProgress.ts"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Seed the app with a small default course catalog (at least 2 courses, each with at least 5 lessons) without requiring admin tools",
+      "reason": "Seeding is implemented via a `public shared ({ caller }) func init()` that is admin-gated and therefore not guaranteed to exist by default after deployment. Also, the visible portion seeds 2 courses but only shows 3 lessons added (not 5 per course). More seeding may exist in truncated content, but it is not evidenced in the diff summary.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Generated images exist under frontend/public/assets/generated with filenames shikho-logo.dim_512x512.png and shikho-hero.dim_1600x900.png",
+      "reason": "Frontend code references these files, but the diff summary does not show the actual image files under `frontend/public/assets/generated` (some added files are omitted due to limits). Therefore existence is not evidenced.",
+      "evidence": [
+        "frontend/src/components/layout/HeaderNav.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Admin access-control framework and secret-token initialization flow (e.g., `_initializeAccessControlWithSecret`, `caffeineAdminToken`, admin-gated `init` for seeding)",
+      "reason": "The BuildRequest does not ask for an admin/authorization system beyond Internet Identity authentication for users, nor a secret admin token URL parameter mechanism.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Branding/footer promotion linking to caffeine.ai",
+      "reason": "The BuildRequest does not request external promotional links or 'Built with caffeine.ai' attribution in the UI.",
+      "evidence": [
+        "frontend/src/components/layout/Footer.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.66,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/AuthButton.tsx",
+    "frontend/src/components/auth/RequireAuth.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/HeaderNav.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCourses.ts",
+    "frontend/src/hooks/useEnrollment.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useMyLearning.ts",
+    "frontend/src/hooks/useProgress.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CourseDetailPage.tsx",
+    "frontend/src/pages/CourseListPage.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/src/pages/LessonViewerPage.tsx",
+    "frontend/src/pages/MyLearningPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
